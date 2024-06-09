@@ -66,7 +66,7 @@ public class GameTimerXY : MonoBehaviour
         }
         if (nowTime <= 0 && rest == true)
         {
-            print("ÈÞ½Ä Á¾·á");
+            //print("ÈÞ½Ä Á¾·á");
             roundStart = true;
             rest = false;
             cycle = true;

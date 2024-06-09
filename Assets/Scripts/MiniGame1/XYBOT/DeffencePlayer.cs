@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeffencePlayer : MonoBehaviour
 {
     public TextMeshProUGUI lifeText;
     public int maxHP;
     public float curHp;
-
+    [SerializeField] private GameObject failtext;
     void Start()
     {
         curHp = maxHP;
@@ -17,6 +18,6 @@ public class DeffencePlayer : MonoBehaviour
     void Update() {
         lifeText.text = "ÇöÀç Ã¼·Â : " + curHp.ToString();
         if (curHp <= 0)
-            print("À¸¾ÇÁ×À½");
+            failtext.SetActive(true);
     }
 }

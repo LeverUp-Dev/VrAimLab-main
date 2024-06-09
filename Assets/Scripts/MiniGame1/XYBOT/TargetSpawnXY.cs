@@ -14,7 +14,7 @@ public class TargetSpawnXY : MonoBehaviour
     //int EnumSize = Enum.GetValues(typeof(ZombieType)).Length; // 열거형 길이 받아오기. 추후에 배열 형태를 리스트로 바꿀 것.
     public float[] SpawnInterval; // 몹 소환 간격
     public int[] targetCount;
-    [SerializeField]int[] targetCountTemp;
+    public int[] targetCountTemp;
     public bool isLocked;
     public bool spawnTypeInterval; // 켜기 : 일정 시간 후 소환 끄기 : 전투 라운드 시간을 소환량에 나눠 소환
     void Awake() {
@@ -30,6 +30,7 @@ public class TargetSpawnXY : MonoBehaviour
                 case 0:
                     if (targetCountTemp[(int)TargetType.normalType] > 0 && !isLocked)
                     {
+                        print("Test");
                         isLocked = true;  //업데이트에서 연속 실행 방지
                         StartCoroutine(SpawnEnemy_Normal());
                         //isLocked = true;    //업데이트에서 연속 실행 방지
