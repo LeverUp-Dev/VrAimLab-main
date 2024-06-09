@@ -43,25 +43,25 @@ public class Target : MonoBehaviour
 
     IEnumerator Reset()
     {
+        if (isFall == false)
+            yield break;
+
+        isFall = false;
         yield return new WaitForEndOfFrame();
 
-        //if (!isFall)
-        //    return;
-
-        while (transform.eulerAngles.x > 0)
+        while (true)
         {
-            rotX = returnSpeed * Time.deltaTime;
-            transform.eulerAngles -= new Vector3(rotX, 0, 0);
-            //if (transform.eulerAngles.x >= 10)
-            //{
-            //    transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
-            //}
+            Debug.Log("ÀÛµ¿Áß");
+            //rotX = returnSpeed * Time.deltaTime;
+            //transform.eulerAngles += new Vector3(-rotX, 0, 0);
+            transform.Rotate(10, 0, 0);
+            yield return null;
+
+            if (transform.eulerAngles.x >= 0 && transform.eulerAngles.x <= 15)
+                break;
         }
 
-        yield return new WaitUntil(() => transform.eulerAngles.x >= 10);
-        transform.eulerAngles = new Vector3(0f, transform.eulerAngles.y, transform.eulerAngles.z);
-
-        isFall = true;
+        transform.eulerAngles = Vector3.zero;
 
         yield break;
     }

@@ -7,13 +7,32 @@ using VRFPSKit;
 public class BodyShootXY : MonoBehaviour
 {
     public EnemyBaseXY target;
-    public Text text;
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Bullet") && !target.isDie && !other.gameObject.GetComponent<Bullet>().isBulletContatct)
+
+    GameTimerXY gtXY;
+    int count = 0;
+
+    private void Start()
+    {
+        gtXY = FindObjectOfType<GameTimerXY>();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet") && !target.isDie && !collision.gameObject.GetComponent<Bullet>().isBulletContatct)
         {
-            other.gameObject.GetComponent<Bullet>().isBulletContatct = true;
+            count++;
+            if (count == 3)
+            {
+                Destroy(target.gameObject);
+            }
+
+            collision.gameObject.GetComponent<Bullet>().isBulletContatct = true;
             target.stats.curHP -= 1;
-            text.text += 1;
+
+            gtXY.scoreCount++;
+            gtXY.score.text = "Á¡¼ö: " + gtXY.scoreCount;
+
+            Destroy(collision.gameObject);
         }
     }
 }

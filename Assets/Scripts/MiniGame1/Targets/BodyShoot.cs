@@ -13,18 +13,17 @@ public class BodyShoot : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet") && !target.rot && !collision.gameObject.GetComponent<Bullet>().isBulletContatct)
         {
-            if (hitCount == 2)
+            hitCount++;
+
+            if (hitCount == 3)
             {
                 target.rot = true;
                 hitCount = 0;
             }
 
-            hitCount++;
-            print(collision.gameObject.name);
             target.PlaySound();
             collision.gameObject.GetComponent<Bullet>().isBulletContatct = true;
             target.score += 1;
-            print("¹Ùµð¼¦!" + target.score);
         }
     }
 }

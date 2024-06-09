@@ -11,6 +11,10 @@ public class GameTimerXY : MonoBehaviour
 {
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI roundText;
+    public TextMeshProUGUI score;
+
+    public int scoreCount = 0;
+
     enum TimeList { normal=0,boss,bonus,rest };
     [Header ("NowTimeSet")]
     public int roundCount = 0;
